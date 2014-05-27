@@ -1,0 +1,4 @@
+vagrant-docker
+==============
+
+vagrant-docker
