@@ -20,6 +20,9 @@ build:
 #        name: Run chmod 0400 $HOME/.ssh/id_rsa
 #        code: chmod 0400 $HOME/.ssh/id_rsa
     - script:
+        name: docker -v
+        code: docker -v 
+    - script:
         name: gem install
         code: sudo gem install serverspec --no-ri --no-rdoc
     - script:
