@@ -1,4 +1,4 @@
-box: wercker-labs/docker 
+box: wercker/ruby
 build:
   steps:
 #    - script:
@@ -19,6 +19,12 @@ build:
 #    - script:
 #        name: Run chmod 0400 $HOME/.ssh/id_rsa
 #        code: chmod 0400 $HOME/.ssh/id_rsa
+    - script:
+        name: docker install 
+        code: |
+            sudo apt-get update
+            sudo apt-get install docker.io
+            sudo ln -sf /usr/bin/docker.io /usr/local/bin/docker
     - script:
         name: docker version
         code: docker -v 
