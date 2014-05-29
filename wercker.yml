@@ -22,9 +22,10 @@ build:
     - script:
         name: docker install 
         code: |
+            sudo sh -c "echo deb https://get.docker.io/ubuntu docker main\
+            > /etc/apt/sources.list.d/docker.list"
             sudo apt-get update
-            sudo apt-get install docker.io
-            sudo ln -sf /usr/bin/docker.io /usr/local/bin/docker
+            sudo apt-get install lxc-docker
     - script:
         name: docker version
         code: docker -v 
