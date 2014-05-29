@@ -1,4 +1,4 @@
-box: wercker/ruby
+box: wercker-labs/docker 
 build:
   steps:
 #    - script:
@@ -20,7 +20,7 @@ build:
 #        name: Run chmod 0400 $HOME/.ssh/id_rsa
 #        code: chmod 0400 $HOME/.ssh/id_rsa
     - script:
-        name: docker -v
+        name: docker version
         code: docker -v 
     - script:
         name: gem install
