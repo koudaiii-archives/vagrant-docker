@@ -9,10 +9,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     app.vm.provider "docker" do |d|
       d.build_dir = "./image"
       d.has_ssh = true
+      puts 'build_docker_base' if ENV['WERCKER'] == 'true' 
     end
+
     app.ssh.port = 22
     app.ssh.username = "root"
     app.ssh.private_key_path = "ubuntu.key"
   end
-
 end
