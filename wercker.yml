@@ -26,7 +26,7 @@ build:
         code: sudo dpkg -i vagrant_1.6.2_x86_64.deb
     - script:
         name: Run vagrant up
-        coge: vagrant up --provider=docker
+        code: vagrant up --provider=docker
 #    - script:
 #        name: Run rake spec:app
 #        code: rake spec:app
