@@ -1,4 +1,3 @@
-#box: wercker/default
 box: wercker/ruby
 build:
   steps:
@@ -16,27 +15,6 @@ build:
     - script:
         name: docker version
         code: docker -v
-#box: wercker/ruby
-#build:
-#  steps:
-#    - script:
-#        name: Make $HOME/.ssh directory
-#        code: mkdir -p $HOME/.ssh
-#    - create-file:
-#        name: Put SSH public key
-#        filename: $HOME/.ssh/id_rsa.pub
-#        overwrite: true
-#        hide-from-log: true
-#        content: $DIGITALOCEAN_SSH_KEY_PUBLIC
-#    - create-file:
-#        name: Put SSH private key
-#        filename: $HOME/.ssh/id_rsa
-#        overwrite: true
-#        hide-from-log: true
-#        content: $DIGITALOCEAN_SSH_KEY_PRIVATE
-#    - script:
-#        name: Run chmod 0400 $HOME/.ssh/id_rsa
-#        code: chmod 0400 $HOME/.ssh/id_rsa
     - script:
         name: gem install
         code: sudo gem install serverspec --no-ri --no-rdoc
@@ -46,25 +24,15 @@ build:
     - script:
         name: Install Vagrant
         code: sudo dpkg -i vagrant_1.6.2_x86_64.deb
-#    - script:
-#        name: Run vagrant plugin install
-#        code: vagrant plugin install vagrant-digitalocean
-#    - script:
-#        name: Run vagrant up docekr_base
-#        code: |
-#              cd docker_base
-#              vagrant up
     - script:
         name: Run vagrant up
         coge: vagrant up --provider=docker
-#        code: vagrant up --provider=digital_ocean
 #    - script:
 #        name: Run rake spec:app
 #        code: rake spec:app
 #    - script:
 #        name: Run rake spec:proxy
 #        code: rake spec:proxy
-
   after-steps:
     - script:
         name: Run vagrant destroy
