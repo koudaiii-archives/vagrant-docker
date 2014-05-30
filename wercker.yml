@@ -24,6 +24,9 @@ build:
     - script:
         name: Install Vagrant
         code: sudo dpkg -i vagrant_1.6.2_x86_64.deb
+    - script: 
+        name: usermod vagrant
+        code: usermod -a -G docker vagrant
     - script:
         name: Run vagrant up
         code: vagrant up --provider=docker
