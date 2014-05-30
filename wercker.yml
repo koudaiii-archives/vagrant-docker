@@ -33,7 +33,11 @@ build:
 #        code: vagrant plugin install vagrant-digitalocean
     - script:
         name: Run vagrant up
-        code: vagrant up --provider=docker
+        code: |
+        cd docker_base
+        vagrant up
+        cd ../
+        vagrant up --provider=docker
 #        code: vagrant up --provider=digital_ocean
 #    - script:
 #        name: Run rake spec:app
