@@ -1,6 +1,24 @@
+#box: wercker/default
 box: wercker/ruby
 build:
   steps:
+    - script:
+        name: Download release
+        code: curl -O "http://download.geteventstore.com/binaries/eventstore-mono-2.0.1.tgz"
+    - script: 
+        name: Unpack
+        code: |-
+              mkdir ./eventstore-bin
+              tar xvfz eventstore-mono-2.0.1.tgz -C ./eventstore-bin
+    - script:
+        name: Install docker
+        code: curl get.docker.io | sudo sh -x
+    - script:
+        name: docker version
+        code: docker -v
+#box: wercker/ruby
+#build:
+#  steps:
 #    - script:
 #        name: Make $HOME/.ssh directory
 #        code: mkdir -p $HOME/.ssh
@@ -28,14 +46,14 @@ build:
     - script:
         name: Install Vagrant
         code: sudo dpkg -i vagrant_1.6.2_x86_64.deb
-    - script:
-        name: Run vagrant plugin install
+#    - script:
+#        name: Run vagrant plugin install
 #        code: vagrant plugin install vagrant-digitalocean
-    - script:
-        name: Run vagrant up docekr_base
-        code: |
-              cd docker_base
-              vagrant up
+#    - script:
+#        name: Run vagrant up docekr_base
+#        code: |
+#              cd docker_base
+#              vagrant up
     - script:
         name: Run vagrant up
         coge: vagrant up --provider=docker
