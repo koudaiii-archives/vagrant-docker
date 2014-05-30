@@ -18,9 +18,10 @@ build:
     - script:
         name: docker setting
         code: |
-              export DOCKER_HOST=tcp://localhost:4243
+              sudo export DOCKER_HOST=tcp://localhost:4243
               sudo ln -sf /usr/bin/docker /usr/local/bin/docker
-              sudo usermod -aG docker $LOGNAME
+              sudo echo $LOGNAME
+              sudo usermod -aG root $LOGNAME
     - script:
         name: gem install
         code: sudo gem install serverspec --no-ri --no-rdoc
