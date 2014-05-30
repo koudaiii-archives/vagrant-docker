@@ -5,6 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  puts "#{ENV['WERCKER']}"
   config.vm.define "app" do |app|
     app.vm.provider "docker" do |d|
       d.build_dir = "./image"
