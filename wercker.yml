@@ -16,6 +16,10 @@ build:
         name: docker version
         code: docker -v
     - script:
+        name: docker synboliclink
+        code: sudo ln -sf /usr/bin/docker /usr/local/bin/docker
+
+    - script:
         name: gem install
         code: sudo gem install serverspec --no-ri --no-rdoc
     - script:
