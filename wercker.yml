@@ -18,6 +18,7 @@ build:
               docker -v
               sudo chmod 777 /var/run/docker.sock
               sudo usermod -aG docker ubuntu 
+              sudo service docker restart
               sudo docker -d
     - script:
         name: gem install
