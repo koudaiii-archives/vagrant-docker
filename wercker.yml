@@ -16,7 +16,7 @@ build:
         name: docker version
         code: |
               docker -v
-              docker -d
+              sudo docker -d
     - script:
         name: gem install
         code: sudo gem install serverspec --no-ri --no-rdoc
