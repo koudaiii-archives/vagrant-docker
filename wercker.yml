@@ -13,12 +13,14 @@ build:
         name: Install docker
         code: curl get.docker.io | sudo sh -x
     - script:
-        name: docker version
+        name: docker setting 
         code: |
               docker -v
               sudo usermod -aG docker ubuntu 
               sudo service docker restart
-              sudo docker -d
+              export DOCKER_HOST=tcp://localhost:4243
+              sudo ln -sf /usr/bin/docker /usr/local/bin/docker
+              docker -d
     - script:
         name: gem install
         code: sudo gem install serverspec --no-ri --no-rdoc
@@ -30,12 +32,7 @@ build:
         code: |
               sudo dpkg -i vagrant_1.6.3_x86_64.deb
               sudo apt-get install virtualbox
-              sudo  vagrant plugin install vagrant-vbguest
-    - script:                                                                                                                                                                           
-        name: docker setting
-        code: |
-              export DOCKER_HOST=tcp://localhost:4243
-              sudo ln -sf /usr/bin/docker /usr/local/bin/docker
+              sudo vagrant plugin install vagrant-vbguest
 #              sudo useradd vagrant
 #              sudo usermod -aG docker vagrant
     - script:
