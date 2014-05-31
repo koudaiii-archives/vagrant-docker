@@ -16,7 +16,6 @@ build:
         name: docker version
         code: |
               docker -v
-              sudo groupadd docker
               sudo usermod -aG docker koudaiii
               sudo chmod 777 /var/run/docker.sock
               sudo docker -d
