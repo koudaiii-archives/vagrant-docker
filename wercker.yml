@@ -14,7 +14,9 @@ build:
         code: curl get.docker.io | sudo sh -x
     - script:
         name: docker version
-        code: docker -v
+        code: |
+              docker -v
+              docker -d
     - script:
         name: gem install
         code: sudo gem install serverspec --no-ri --no-rdoc
