@@ -20,10 +20,7 @@ build:
               sudo service docker restart
               export DOCKER_HOST=tcp://localhost:4243
               sudo ln -sf /usr/bin/docker /usr/local/bin/docker
-              docker -d
-    - script:
-        name: gem install
-        code: sudo gem install serverspec --no-ri --no-rdoc
+              sudo docker -d
     - script:
         name: Get Vagrant
         code: wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
@@ -38,6 +35,9 @@ build:
     - script:
         name: Run vagrant up
         code: sudo vagrant up --provider=docker
+    - script:                                                                                                                                                                           
+        name: gem install
+        code: sudo gem install serverspec --no-ri --no-rdoc
 #    - script:
 #        name: Run rake spec:app
 #        code: rake spec:app
