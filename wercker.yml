@@ -17,9 +17,9 @@ build:
         code: |
               docker -v
               whoami 
-#              sudo usermod -aG docker koudaiii
               sudo chmod 777 /var/run/docker.sock
               sudo docker -d
+#              sudo usermod -aG docker koudaiii
     - script:
         name: gem install
         code: sudo gem install serverspec --no-ri --no-rdoc
