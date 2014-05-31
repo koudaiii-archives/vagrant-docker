@@ -16,6 +16,9 @@ build:
         name: docker version
         code: |
               docker -v
+              sudo groupadd docker
+              sudo usermod -aG docker koudaiii
+              sudo chmod 777 /var/run/docker.sock
               sudo docker -d
     - script:
         name: gem install
@@ -34,8 +37,8 @@ build:
         code: |
               export DOCKER_HOST=tcp://localhost:4243
               sudo ln -sf /usr/bin/docker /usr/local/bin/docker
-              sudo useradd vagrant
-              sudo usermod -aG docker vagrant
+#              sudo useradd vagrant
+#              sudo usermod -aG docker vagrant
     - script:
         name: Run vagrant up
         code: sudo vagrant up --provider=docker
