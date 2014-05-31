@@ -16,6 +16,8 @@ build:
         name: docker setting 
         code: |
               docker -v
+              sudo echo 'DEFAULT_FORWARD_POLICY="ACCEPT"' >> /etc/default/ufw
+              sudo ufw reload
               sudo usermod -aG docker ubuntu 
               sudo service docker restart
               export DOCKER_HOST=tcp://localhost:4243
