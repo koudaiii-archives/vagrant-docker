@@ -16,13 +16,6 @@ build:
         name: docker version
         code: docker -v
     - script:
-        name: docker setting
-        code: |
-              export DOCKER_HOST=tcp://localhost:4243
-              sudo ln -sf /usr/bin/docker /usr/local/bin/docker
-              sudo useradd vagrant
-              sudo usermod -aG docker vagrant
-    - script:
         name: gem install
         code: sudo gem install serverspec --no-ri --no-rdoc
     - script:
@@ -31,6 +24,13 @@ build:
     - script:
         name: Install Vagrant
         code: sudo dpkg -i vagrant_1.6.3_x86_64.deb
+    - script:                                                                                                                                                                           
+        name: docker setting
+        code: |
+              export DOCKER_HOST=tcp://localhost:4243
+              sudo ln -sf /usr/bin/docker /usr/local/bin/docker
+              sudo useradd vagrant
+              sudo usermod -aG docker vagrant
     - script:
         name: Run vagrant up
         code: sudo vagrant up --provider=docker
