@@ -9,6 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     app.vm.provider "docker" do |d|
       d.build_dir = "./image"
       d.has_ssh = true
+      d.vagrant_vagrantfile = "./docker_base/Vagrantfile"
     end
 
     app.ssh.port = 22

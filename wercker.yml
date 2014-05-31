@@ -23,7 +23,10 @@ build:
         code: wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
     - script:
         name: Install Vagrant
-        code: sudo dpkg -i vagrant_1.6.3_x86_64.deb
+        code: |
+              sudo dpkg -i vagrant_1.6.3_x86_64.deb
+              sudo apt-get install virtualbox
+              sudo  vagrant plugin install vagrant-vbguest
     - script:                                                                                                                                                                           
         name: docker setting
         code: |
