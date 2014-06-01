@@ -13,39 +13,42 @@ build:
         name: Install docker
         code: curl get.docker.io | sudo sh -x
     - script:
-        name: docker setting 
-        code: |
-              docker -v
-              sudo ufw disable
-              sudo usermod -aG docker ubuntu 
-              sudo service docker restart
-              export DOCKER_HOST=tcp://localhost:4243
-              sudo ln -sf /usr/bin/docker /usr/local/bin/docker
-              sudo docker -d
-    - script:
-        name: Get Vagrant
-        code: wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
-    - script:
-        name: Install Vagrant
-        code: |
-              sudo dpkg -i vagrant_1.6.3_x86_64.deb
-              sudo apt-get install virtualbox
-              sudo vagrant plugin install vagrant-vbguest
+        name: Build container
+        code: docker build -t="eventstore" ./image
+#    - script:
+#        name: docker setting 
+#          code: |
+#              docker -v
+#              sudo ufw disable
+#              sudo usermod -aG docker ubuntu 
+#              sudo service docker restart
+#              export DOCKER_HOST=tcp://localhost:4243
+#              sudo ln -sf /usr/bin/docker /usr/local/bin/docker
+#              sudo docker -d
+#    - script:
+#        name: Get Vagrant
+#        code: wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
+#    - script:
+#        name: Install Vagrant
+#        code: |
+#              sudo dpkg -i vagrant_1.6.3_x86_64.deb
+#              sudo apt-get install virtualbox
+#              sudo vagrant plugin install vagrant-vbguest
 #              sudo useradd vagrant
 #              sudo usermod -aG docker vagrant
-    - script:
-        name: Run vagrant up
-        code: sudo vagrant up --provider=docker
-    - script:                                                                                                                                                                           
-        name: gem install
-        code: sudo gem install serverspec --no-ri --no-rdoc
+#    - script:
+#        name: Run vagrant up
+#        code: sudo vagrant up --provider=docker
+#    - script: 
+#        name: gem install
+#        code: sudo gem install serverspec --no-ri --no-rdoc
 #    - script:
 #        name: Run rake spec:app
 #        code: rake spec:app
 #    - script:
 #        name: Run rake spec:proxy
 #        code: rake spec:proxy
-  after-steps:
-    - script:
-        name: Run vagrant destroy
-        code: vagrant destroy --force
+#  after-steps:
+#    - script:
+#        name: Run vagrant destroy
+#        code: vagrant destroy --force
