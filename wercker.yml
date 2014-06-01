@@ -1,20 +1,20 @@
 box: wercker/ruby
 build:
   steps:
-    - script:
-        name: Download release
-        code: curl -O "http://download.geteventstore.com/binaries/eventstore-mono-2.0.1.tgz"
-    - script: 
-        name: Unpack
-        code: |-
-              mkdir ./eventstore-bin
-              tar xvfz eventstore-mono-2.0.1.tgz -C ./eventstore-bin
-    - script:
-        name: Install docker
-        code: curl get.docker.io | sudo sh -x
-    - script:
-        name: Build container
-        code: docker build -t="eventstore" ./image
+#    - script:
+#        name: Download release
+#        code: curl -O "http://download.geteventstore.com/binaries/eventstore-mono-2.0.1.tgz"
+#    - script: 
+#        name: Unpack
+#        code: |-
+#              mkdir ./eventstore-bin
+#              tar xvfz eventstore-mono-2.0.1.tgz -C ./eventstore-bin
+#    - script:
+#        name: Install docker
+#        code: curl get.docker.io | sudo sh -x
+#    - script:
+#        name: Build container
+#        code: docker build -t="eventstore" ./image
 #    - script:
 #        name: docker setting 
 #          code: |
@@ -25,30 +25,31 @@ build:
 #              export DOCKER_HOST=tcp://localhost:4243
 #              sudo ln -sf /usr/bin/docker /usr/local/bin/docker
 #              sudo docker -d
-#    - script:
-#        name: Get Vagrant
-#        code: wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
-#    - script:
-#        name: Install Vagrant
-#        code: |
-#              sudo dpkg -i vagrant_1.6.3_x86_64.deb
-#              sudo apt-get install virtualbox
-#              sudo vagrant plugin install vagrant-vbguest
+    - script:
+        name: Get Vagrant
+        code: wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
+    - script:
+        name: Install Vagrant
+        code: |
+              sudo dpkg -i vagrant_1.6.3_x86_64.deb
+              sudo apt-get install virtualbox
+              sudo vagrant plugin install vagrant-vbguest
 #              sudo useradd vagrant
 #              sudo usermod -aG docker vagrant
-#    - script:
-#        name: Run vagrant up
+    - script:
+        name: Run vagrant up
+        code: sudo vagrant up
 #        code: sudo vagrant up --provider=docker
-#    - script: 
-#        name: gem install
-#        code: sudo gem install serverspec --no-ri --no-rdoc
+    - script: 
+        name: gem install
+        code: sudo gem install serverspec --no-ri --no-rdoc
 #    - script:
 #        name: Run rake spec:app
 #        code: rake spec:app
 #    - script:
 #        name: Run rake spec:proxy
 #        code: rake spec:proxy
-#  after-steps:
-#    - script:
-#        name: Run vagrant destroy
-#        code: vagrant destroy --force
+  after-steps:
+    - script:
+        name: Run vagrant destroy
+        code: vagrant destroy --force

@@ -9,6 +9,7 @@
 /test/version_tmp/
 /tmp/
 /.vagrant
+/docker_base/.vagrant
 
 ## Specific to RubyMotion:
 .dat*
