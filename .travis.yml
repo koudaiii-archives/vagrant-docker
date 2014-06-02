@@ -1,0 +1,17 @@
+language: ruby
+rvm:
+  - "2.1.1"
+  install:
+    - sudo echo "deb http://download.virtualbox.org/virtualbox/debian precise contrib" | sudo tee -a /etc/apt/sources.list 
+    - wget http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+    - sudo apt-get update
+    - sudo apt-get -y install linux-headers-$(uname -r)
+    - sudo apt-get -y install virtualbox
+    - VBoxManage -v
+    - wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
+    - sudo dpkg -i vagrant_1.6.3_x86_64.deb
+    - sudo vagrant plugin install vagrant-vbguest
+  script:
+    - /opt/vagrant/bin/vagrant up --provider=docker
+    - /opt/vagrant/bin/vagrant destroy --force
+
