@@ -10,6 +10,15 @@ before_install:
   - wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
   - sudo dpkg -i vagrant_1.6.3_x86_64.deb
   - sudo vagrant plugin install vagrant-vbguest
+  - curl -O "http://download.geteventstore.com/binaries/eventstore-mono-2.0.1.tgz"
+  - mkdir ./eventstore-bin
+  - tar xvfz eventstore-mono-2.0.1.tgz -C ./eventstore-bin
+  - curl get.docker.io | sudo sh -x
+  - sudo usermod -aG docker travis
+  - sudo service docker restart
+  - export DOCKER_HOST=tcp://localhost:4243
+  - sudo ln -sf /usr/bin/docker /usr/local/bin/docker
+  - sudo docker -d
 script:
   - sudo rm -rf /home/travis/.vagrant.d
   - /opt/vagrant/bin/vagrant up --provider=docker
