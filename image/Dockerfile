@@ -2,7 +2,7 @@
 #
 # VERSION       1
 
-FROM ubuntu:14.04
+FROM ubuntu:12.04
 MAINTAINER koudaiiii "cs006061@gmail.com"
 
 # make sure the package repository is up to date
