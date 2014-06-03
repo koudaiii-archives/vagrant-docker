@@ -11,5 +11,6 @@ before_install:
   - sudo dpkg -i vagrant_1.6.3_x86_64.deb
   - sudo vagrant plugin install vagrant-vbguest
 script:
+  - sudo rm -rf /home/travis/.vagrant.d
   - /opt/vagrant/bin/vagrant up --provider=docker
   - /opt/vagrant/bin/vagrant destroy --force
