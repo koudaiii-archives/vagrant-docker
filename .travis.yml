@@ -6,6 +6,7 @@ before_install:
   - wget http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
   - sudo apt-get update
   - sudo apt-get -y install virtualbox-4.3
+  - sudo /etc/init.d/vboxdrv setup
   - VBoxManage --version
   - wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
   - sudo dpkg -i vagrant_1.6.3_x86_64.deb
