@@ -10,16 +10,20 @@ before_install:
   - wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
   - sudo dpkg -i vagrant_1.6.3_x86_64.deb
   - sudo vagrant plugin install vagrant-vbguest
-  - curl -O "http://download.geteventstore.com/binaries/eventstore-mono-2.0.1.tgz"
-  - mkdir ./eventstore-bin
-  - tar xvfz eventstore-mono-2.0.1.tgz -C ./eventstore-bin
-  - curl get.docker.io | sudo sh -x
+  - sudo sh -c "wget -qO- https://get.docker.io/gpg | apt-key add -"
+  - sudo sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
+  - sudo apt-get update
+  - echo exit 101 | sudo tee /usr/sbin/policy-rc.d
+  - sudo chmod +x /usr/sbin/policy-rc.d
+  - sudo apt-get install -qy slirp lxc lxc-docker
+  - git clone git://github.com/jpetazzo/sekexe
   - sudo usermod -aG docker travis
   - sudo service docker restart
   - export DOCKER_HOST=tcp://localhost:4243
   - sudo ln -sf /usr/bin/docker /usr/local/bin/docker
   - sudo docker -d
 script:
+  - sekexe/run "`pwd`/uml.sh"
   - sudo rm -rf /home/travis/.vagrant.d
   - /opt/vagrant/bin/vagrant up --provider=docker
   - /opt/vagrant/bin/vagrant destroy --force
