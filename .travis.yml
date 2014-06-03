@@ -10,20 +10,8 @@ before_install:
   - wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
   - sudo dpkg -i vagrant_1.6.3_x86_64.deb
   - sudo vagrant plugin install vagrant-vbguest
-  - sudo sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
-  - sudo apt-get update
-  - echo exit 101 | sudo tee /usr/sbin/policy-rc.d
-  - sudo chmod +x /usr/sbin/policy-rc.d
-  - sudo apt-get install linux-image-generic-lts-raring linux-headers-generic-lts-raring
-  - sudo apt-get install -qy slirp lxc lxc-docker
-  - git clone git://github.com/jpetazzo/sekexe
-  - sudo usermod -aG docker travis
-  - sudo service docker restart
-  - export DOCKER_HOST=tcp://localhost:4243
-  - sudo ln -sf /usr/bin/docker /usr/local/bin/docker
-  - sudo docker -d
 script:
-  - sekexe/run "`pwd`/uml.sh"
   - sudo rm -rf /home/travis/.vagrant.d
-  - /opt/vagrant/bin/vagrant up --provider=docker
+  - cd image/
+  - /opt/vagrant/bin/vagrant up 
   - /opt/vagrant/bin/vagrant destroy --force
