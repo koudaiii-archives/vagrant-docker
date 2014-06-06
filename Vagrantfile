@@ -11,10 +11,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     d.has_ssh = true
     d.vagrant_vagrantfile = "./docker_base/Vagrantfile"
   end
+  
+  if ENV['VAGRANT_DEFAULT_PROVIDER'] = "docker"
+    config.ssh.port = 22
+    config.ssh.username = "root"
+    config.ssh.private_key_path = "ubuntu.key"
+    #config.vm.network :forwarded_port, guest: 80, host: 8080
+  end
 
-  config.ssh.port = 22
-  config.ssh.username = "root"
-  config.ssh.private_key_path = "ubuntu.key"
-  #config.vm.network :forwarded_port, guest: 80, host: 8080
+  config.vm.provision "chef_solo" do |chef|
+    chef.add_recipe "apache"
+  end
 
 end

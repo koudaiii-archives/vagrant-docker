@@ -1,18 +1,20 @@
 box: wercker/ruby
 build:
   steps:
+    # Execute the bundle install step, a step provided by wercker
+    - bundle-install
     - script:
         name: Get Vagrant
         code: wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
     - script:
         name: Install Vagrant
         code: sudo dpkg -i vagrant_1.6.3_x86_64.deb
+    - script:
+        name: Install Vagrant Plugin in vagrant-omnibus
+        code: vagrant plugin install vagrant-omnibus
 #    - script:
 #        name: Run vagrant up
 #        code: sudo vagrant up --provider=
-    - script: 
-        name: gem install
-        code: sudo gem install serverspec --no-ri --no-rdoc
 #    - script:
 #        name: Run rake spec:app
 #        code: rake spec:app
