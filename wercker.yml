@@ -4,6 +4,11 @@ build:
     # Execute the bundle install step, a step provided by wercker
     - bundle-install
     - script:
+        name: install libxml2 
+        code: |
+              sudo apt-get update -y
+              sudo apt-get install libxml2
+    - script:
         name: Get Vagrant
         code: wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
     - script:
