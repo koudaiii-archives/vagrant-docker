@@ -9,6 +9,8 @@
 /test/version_tmp/
 /tmp/
 /.vagrant
+/.env
+/.digital_ocean
 /docker_base/.vagrant
 
 ## Specific to RubyMotion:
