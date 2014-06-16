@@ -45,7 +45,7 @@ build:
               export DIGITALOCEAN_API_KEY=$DIGITALOCEAN_API_KEY
     - script:
         name: Run vagrant up
-        code: sudo vagrant up --provider=digital_ocean ci
+        code: sudo vagrant up --provider=digital_ocean ci DIGITALOCEAN_CLIENT_ID=$DIGITALOCEAN_CLIENT_ID DIGITALOCEAN_API_KEY=$DIGITALOCEAN_API_KEY
 #    - script:
 #        name: Run rake spec:app
 #        code: rake spec:app
