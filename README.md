@@ -11,10 +11,18 @@ vagrant-docker
 Install vagrant and virtualbox
 Sign up digital_ocean
 
+[vagrant](http://www.vagrantup.com/)
+[virtualbox](https://www.virtualbox.org/)
+[digital_ocean](https://www.digitalocean.com/)
+
 ### Usege
 
       $ vagrant plugin install vagrant-omnibus
       $ vagrant plugin install vagrant-digitalocean
+      $ brew install curl-ca-bundle
+
+[vagrant-omunibus](https://github.com/schisamo/vagrant-omnibus)
+[vagrant-digitalocean](https://github.com/smdahlen/vagrant-digitalocean)
 
 ### Run
       $ vagrant up --provider=docker local
