@@ -40,10 +40,7 @@ build:
         code: vagrant plugin install vagrant-digitalocean
     - script:
         name: Run vagrant up
-        code: |
-              export DIGITALOCEAN_CLIENT_ID=$DIGITALOCEAN_CLIENT_ID
-              export DIGITALOCEAN_API_KEY=$DIGITALOCEAN_API_KEY
-              sudo vagrant up --provider=digital_ocean ci 
+        code: vagrant up --provider=digital_ocean ci 
 #    - script:
 #        name: Run rake spec:app
 #        code: rake spec:app
