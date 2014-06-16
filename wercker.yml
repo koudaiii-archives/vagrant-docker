@@ -41,8 +41,8 @@ build:
     - script:
         name: test
         code: |
-              echo $DIGITALOCEAN_CLIENT_ID
-              echo $DIGITALOCEAN_API_KEY
+              export $DIGITALOCEAN_CLIENT_ID
+              export $DIGITALOCEAN_API_KEY
     - script:
         name: Run vagrant up
         code: sudo vagrant up --provider=digital_ocean ci
