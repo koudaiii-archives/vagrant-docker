@@ -50,4 +50,4 @@ build:
   after-steps:
     - script:
         name: Run vagrant destroy
-        code: vagrant destroy --force
+        code: vagrant destroy --force ci
