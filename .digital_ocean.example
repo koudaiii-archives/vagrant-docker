@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export DIGITALOCEAN_CLIENT_ID=""
+export DIGITALOCEAN_API_KEY=""

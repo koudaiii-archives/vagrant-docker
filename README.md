@@ -12,7 +12,9 @@ Install vagrant and virtualbox
 Sign up digital_ocean
 
 [vagrant](http://www.vagrantup.com/)
+
 [virtualbox](https://www.virtualbox.org/)
+
 [digital_ocean](https://www.digitalocean.com/)
 
 ### Usege
@@ -22,8 +24,19 @@ Sign up digital_ocean
       $ brew install curl-ca-bundle
 
 [vagrant-omunibus](https://github.com/schisamo/vagrant-omnibus)
+
 [vagrant-digitalocean](https://github.com/smdahlen/vagrant-digitalocean)
 
 ### Run
+
+#### local
+
       $ vagrant up --provider=docker local
       $ vagrant up --provider=digital_ocean ci
+
+#### digital_ocean
+
+      $ mv .digital_ocean.example .digital_ocean
+      $ vi .digital_ocean
+      # set Client_ID and set API_KEY
+      $ souce .digital_ocean
