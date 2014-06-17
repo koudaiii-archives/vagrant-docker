@@ -25,8 +25,8 @@ RSpec.configure do |c|
       c.host  = host
       options = Net::SSH::Config.for(c.host)
       user    = options[:user] || Etc.getlogin
-      vagrant_up = `vagrant up --provider=docker local`
-      config = `vagrant ssh-config local`
+      vagrant_up = `vagrant up --provider=digital_ocean ci`
+      config = `vagrant ssh-config ci`
       if config != ''
         config.each_line do |line|
           if match = /HostName (.*)/.match(line)

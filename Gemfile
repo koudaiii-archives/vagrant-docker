@@ -17,7 +17,8 @@ gem "specinfra", "~> 1.18"
 gem "shoulda-matchers"
 gem "rake", "~> 10.1.1"
 gem "net-ssh"
-
+gem "chef"
+gem "knife-solo"
 # Use vagrant-omnibus
 gem 'nokogiri'
 
