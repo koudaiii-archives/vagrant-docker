@@ -17,7 +17,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     local.ssh.private_key_path = "ubuntu.key"
     #local.vm.network :forwarded_port, guest: 80, host: 8080
   end
-  
+
+  config.vm.define :localci do |lc|
+    lc.vm.box     = "ubuntu12.04"
+    lc.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-i386-vagrant-disk1.box"
+  end
+
   config.vm.define :ci do |ci|
     ci.vm.provider :digital_ocean do |di, override|
       override.ssh.private_key_path = "~/.ssh/id_rsa"
