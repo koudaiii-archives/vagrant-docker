@@ -39,6 +39,11 @@ build:
         name: Install Vagrant Plugin in vagrant-digitalocean
         code: vagrant plugin install vagrant-digitalocean
     - script:
+        neme: Download cookbooks
+        code: |
+              cd chef-solo
+              berks vendor cookbooks
+    - script:
         name: Run vagrant up
         code: vagrant up --provider=digital_ocean ci 
     - script:
