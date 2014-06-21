@@ -19,6 +19,7 @@ gem "rake", "~> 10.1.1"
 gem "net-ssh"
 gem "chef"
 gem "knife-solo"
+gem "berkshelf"
 # Use vagrant-omnibus
 gem 'nokogiri'
 
