@@ -45,4 +45,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # use vagrant-omnibus
   config.omnibus.chef_version = :latest
+  config.vm.provision "chef_solo" do |chef|
+    chef.cookbooks_path = ["chef-solo/cookbooks", "chef-solo/site_cookbooks"]
+  end
+
 end
