@@ -41,7 +41,7 @@ build:
     - script:
         neme: Download cookbooks
         code: |
-              cd chef-solo
+              cd chef-repo
               berks vendor cookbooks
     - script:
         name: Run vagrant up
