@@ -42,7 +42,7 @@ build:
         neme: Download cookbooks
         code: |
               cd chef-repo
-              berks vendor cookbooks
+              bundle exec berks vendor cookbooks
     - script:
         name: Run vagrant up
         code: vagrant up --provider=digital_ocean ci 
