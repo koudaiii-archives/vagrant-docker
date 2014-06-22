@@ -48,7 +48,7 @@ build:
         code: vagrant up --provider=digital_ocean ci 
     - script:
         name: Run rake spec
-        code: bundle exec rake spec
+        code: bundle exec rake spec ROLE=ci
 #    - script:
 #        name: Run rake spec:proxy
 #        code: bundle exec rake spec:proxy
